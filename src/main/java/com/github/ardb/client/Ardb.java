@@ -31,8 +31,14 @@ public class Ardb extends BinaryArdb implements ArdbCommands {
     }
 
     @Override
-    public Long geoadd(String key, BigDecimal longitude, BigDecimal latitude, String code) {
-        client.geoadd(key, longitude, latitude, code);
+    public Long geoadd(String key, BigDecimal longitude, BigDecimal latitude, String member) {
+        client.geoadd(key, longitude, latitude, member);
+        return client.getIntegerReply();
+    }
+
+    @Override
+    public Long georemove(String key, String member) {
+        client.georemove(key, member);
         return client.getIntegerReply();
     }
 

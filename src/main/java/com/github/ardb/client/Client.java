@@ -15,12 +15,17 @@ public class Client extends BinaryClient implements Commands {
     }
 
     @Override
-    public void geoadd(String key, BigDecimal longitude, BigDecimal latitude, String code) {
-        geoadd(SafeEncoder.encode(key), SafeEncoder.encode(longitude.toString()), SafeEncoder.encode(latitude.toString()), SafeEncoder.encode(code));
+    public void geoadd(String key, BigDecimal longitude, BigDecimal latitude, String member) {
+        geoadd(SafeEncoder.encode(key), SafeEncoder.encode(longitude.toString()), SafeEncoder.encode(latitude.toString()), SafeEncoder.encode(member));
     }
 
     @Override
     public void geosearch(String key, BigDecimal longitude, BigDecimal latitude, BigDecimal radius) {
         geosearch(SafeEncoder.encode(key), SafeEncoder.encode(longitude.toString()), SafeEncoder.encode(latitude.toString()), SafeEncoder.encode(radius.toString()));
+    }
+
+    @Override
+    public void georemove(String key, String member) {
+        georemove(SafeEncoder.encode(key), SafeEncoder.encode(member));
     }
 }

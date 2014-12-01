@@ -49,13 +49,13 @@ public class BinaryClient extends Connection {
         sendCommand(Protocol.Command.DBSIZE);
     }
 
-    public void geoadd(final byte[] key, byte[] longitude, byte[] latitude, byte[] code) {
+    public void geoadd(final byte[] key, byte[] longitude, byte[] latitude, byte[] member) {
         List<byte[]> args = new ArrayList<byte[]>();
         args.add(key);
         args.add(Protocol.Keyword.WGS84.raw);
         args.add(longitude);
         args.add(latitude);
-        args.add(code);
+        args.add(member);
         sendCommand(Protocol.Command.GEOADD, args.toArray(new byte[args.size()][]));
     }
 
@@ -71,6 +71,10 @@ public class BinaryClient extends Connection {
         args.add(Protocol.Keyword.WITHCOORDINATES.raw);
         args.add(Protocol.Keyword.WITHDISTANCES.raw);
         sendCommand(Protocol.Command.GEOSEARCH, args.toArray(new byte[args.size()][]));
+    }
+
+    public void georemove(final byte[] key, byte[] member) {
+        sendCommand(Protocol.Command.ZREM, key, member);
     }
 
     public void auth(final String password) {

@@ -135,7 +135,7 @@ public final class Protocol {
 
     public static enum Command {
 
-        PING, DBSIZE, SELECT, AUTH, GEOADD, GEOSEARCH;
+        PING, DBSIZE, SELECT, AUTH, GEOADD, GEOSEARCH, ZREM;
 
         public final byte[] raw;
 

@@ -79,7 +79,7 @@ public class Connection {
 
     protected Connection sendCommand(final Protocol.Command cmd) {
         connect();
-        protocol.sendCommand(outputStream, cmd, new byte[0][]);
+        protocol.sendCommand(outputStream, cmd);
         return this;
     }
 

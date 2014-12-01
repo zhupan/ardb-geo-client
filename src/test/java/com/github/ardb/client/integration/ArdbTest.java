@@ -20,6 +20,7 @@ public class ArdbTest {
         ardb.geoadd("hotelgeo", new BigDecimal("40.76480"), new BigDecimal("-73.97333"), "hotelcode4");
         ardb.geoadd("hotelgeo", new BigDecimal("40.76480"), new BigDecimal("-73.97334"), "hotelcode5");
         ardb.geoadd("hotelgeo", new BigDecimal("40.76480"), new BigDecimal("-73.67334"), "hotelcode6");
+        ardb.georemove("hotelgeo", "hotelcode2");
 
         Set<LocationValue> resutl = ardb.geosearch("hotelgeo", new BigDecimal("40.76480"), new BigDecimal("-73.97330"), BigDecimal.valueOf(100));
         System.out.println(resutl);
