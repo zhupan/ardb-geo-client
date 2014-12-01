@@ -6,20 +6,20 @@ public class BinaryArdb implements BinaryArdbCommands {
 
     protected Client client = null;
 
-    public BinaryArdb(final String host) {
+    public BinaryArdb(String host) {
         client = new Client(host);
     }
 
-    public BinaryArdb(final String host, final int port) {
+    public BinaryArdb(String host, int port) {
         client = new Client(host, port);
     }
 
-    public BinaryArdb(final String host, final int port, final int timeout) {
+    public BinaryArdb(String host, int port, int timeout) {
         client = new Client(host, port);
         client.setTimeout(timeout);
     }
 
-    public Long geoadd(final byte[] key, byte[] longitude, byte[] latitude, byte[] code) {
+    public Long geoadd(byte[] key, byte[] longitude, byte[] latitude, byte[] code) {
         client.geoadd(key, longitude, latitude, code);
         return client.getIntegerReply();
     }
@@ -30,7 +30,7 @@ public class BinaryArdb implements BinaryArdbCommands {
         return client.getBinaryMultiBulkReply();
     }
 
-    public String auth(final String password) {
+    public String auth(String password) {
         client.auth(password);
         return client.getStatusCodeReply();
     }

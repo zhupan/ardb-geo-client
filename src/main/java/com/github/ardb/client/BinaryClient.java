@@ -9,15 +9,15 @@ public class BinaryClient extends Connection {
 
     private long db;
 
-    public BinaryClient(final String host) {
+    public BinaryClient(String host) {
         super(host);
     }
 
-    public BinaryClient(final String host, final int port) {
+    public BinaryClient(String host, int port) {
         super(host, port);
     }
 
-    public void setPassword(final String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -36,7 +36,7 @@ public class BinaryClient extends Connection {
         }
     }
 
-    public void select(final int index) {
+    public void select(int index) {
         db = index;
         sendCommand(Protocol.Command.SELECT, Protocol.toByteArray(index));
     }
@@ -49,7 +49,7 @@ public class BinaryClient extends Connection {
         sendCommand(Protocol.Command.DBSIZE);
     }
 
-    public void geoadd(final byte[] key, byte[] longitude, byte[] latitude, byte[] member) {
+    public void geoadd(byte[] key, byte[] longitude, byte[] latitude, byte[] member) {
         List<byte[]> args = new ArrayList<byte[]>();
         args.add(key);
         args.add(Protocol.Keyword.WGS84.raw);
@@ -59,7 +59,7 @@ public class BinaryClient extends Connection {
         sendCommand(Protocol.Command.GEOADD, args.toArray(new byte[args.size()][]));
     }
 
-    public void geosearch(final byte[] key, byte[] longitude, byte[] latitude, byte[] radius) {
+    public void geosearch(byte[] key, byte[] longitude, byte[] latitude, byte[] radius) {
         List<byte[]> args = new ArrayList<byte[]>();
         args.add(key);
         args.add(Protocol.Keyword.WGS84.raw);
@@ -73,11 +73,11 @@ public class BinaryClient extends Connection {
         sendCommand(Protocol.Command.GEOSEARCH, args.toArray(new byte[args.size()][]));
     }
 
-    public void georemove(final byte[] key, byte[] member) {
+    public void georemove(byte[] key, byte[] member) {
         sendCommand(Protocol.Command.ZREM, key, member);
     }
 
-    public void auth(final String password) {
+    public void auth(String password) {
         setPassword(password);
         sendCommand(Protocol.Command.AUTH, password);
     }

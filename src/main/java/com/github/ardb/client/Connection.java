@@ -50,7 +50,7 @@ public class Connection {
         }
     }
 
-    public Connection(final String host) {
+    public Connection(String host) {
         super();
         this.host = host;
     }
@@ -63,7 +63,7 @@ public class Connection {
         }
     }
 
-    protected Connection sendCommand(final Protocol.Command cmd, final String... args) {
+    protected Connection sendCommand(Protocol.Command cmd, String... args) {
         final byte[][] bargs = new byte[args.length][];
         for (int i = 0; i < args.length; i++) {
             bargs[i] = SafeEncoder.encode(args[i]);
@@ -71,19 +71,19 @@ public class Connection {
         return sendCommand(cmd, bargs);
     }
 
-    protected Connection sendCommand(final Protocol.Command cmd, final byte[]... args) {
+    protected Connection sendCommand(Protocol.Command cmd, byte[]... args) {
         connect();
         protocol.sendCommand(outputStream, cmd, args);
         return this;
     }
 
-    protected Connection sendCommand(final Protocol.Command cmd) {
+    protected Connection sendCommand(Protocol.Command cmd) {
         connect();
         protocol.sendCommand(outputStream, cmd);
         return this;
     }
 
-    public Connection(final String host, final int port) {
+    public Connection(String host, int port) {
         super();
         this.host = host;
         this.port = port;
@@ -93,7 +93,7 @@ public class Connection {
         return host;
     }
 
-    public void setHost(final String host) {
+    public void setHost(String host) {
         this.host = host;
     }
 
@@ -101,7 +101,7 @@ public class Connection {
         return port;
     }
 
-    public void setPort(final int port) {
+    public void setPort(int port) {
         this.port = port;
     }
 
@@ -141,7 +141,7 @@ public class Connection {
 
     protected String getStatusCodeReply() {
         flush();
-        final byte[] resp = (byte[]) protocol.read(inputStream);
+        byte[] resp = (byte[]) protocol.read(inputStream);
         if (null == resp) {
             return null;
         } else {

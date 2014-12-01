@@ -6,11 +6,11 @@ import java.math.BigDecimal;
 
 public class Client extends BinaryClient implements Commands {
 
-    public Client(final String host) {
+    public Client(String host) {
         super(host);
     }
 
-    public Client(final String host, final int port) {
+    public Client(String host, int port) {
         super(host, port);
     }
 
