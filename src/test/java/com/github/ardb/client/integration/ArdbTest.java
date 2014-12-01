@@ -1,5 +1,7 @@
-package com.github.ardb.client;
+package com.github.ardb.client.integration;
 
+import com.github.ardb.client.Ardb;
+import com.github.ardb.client.LocationValue;
 import org.junit.Test;
 
 import java.math.BigDecimal;

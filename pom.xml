@@ -20,7 +20,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.5.1</version>
+                <version>3.1</version>
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
@@ -35,9 +35,32 @@
                     <attach>true</attach>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.16</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/integration/**</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
 
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>derbysoft</id>
+            <name>Maven-releases</name>
+            <url>http://10.200.107.43/artifactory/libs-release-local</url>
+        </repository>
+        <snapshotRepository>
+            <id>derbysoft</id>
+            <name>Maven-snapshots</name>
+            <url>http://10.200.107.43/artifactory/libs-snapshot-local</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <scm>
         <url>http://github.com/zhupan/ardb-geo-client</url>
