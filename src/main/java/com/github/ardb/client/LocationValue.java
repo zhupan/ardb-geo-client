@@ -6,16 +6,16 @@ public class LocationValue implements Comparable {
 
     private String member;
 
-    private BigDecimal longitude;
-
     private BigDecimal latitude;
+
+    private BigDecimal longitude;
 
     private BigDecimal distance;
 
-    public LocationValue(String member, BigDecimal longitude, BigDecimal latitude, BigDecimal distance) {
+    public LocationValue(String member, BigDecimal latitude, BigDecimal longitude, BigDecimal distance) {
         this.member = member;
-        this.longitude = longitude;
         this.latitude = latitude;
+        this.longitude = longitude;
         this.distance = distance;
     }
 
